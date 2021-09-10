@@ -442,7 +442,7 @@ public class ReporteDeCreditoConFicoScoreApi {
     
     public okhttp3.Call getReporteCall(String xApiKey, PersonaPeticion request, String xFullReport, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = request;
-        String localVarPath = "/";
+        String localVarPath = "";
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
