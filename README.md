@@ -62,7 +62,6 @@ De igual manera, en el archivo **ReporteDeCreditoConFicoScoreApiTest.java**, se 
     public void getReporteTest() throws ApiException {
     	
         String xApiKey = "your_apikey";
-        String xFullReport = null;
         
         PersonaPeticion request = new PersonaPeticion();
         DomicilioPeticion domicilio = new DomicilioPeticion();
@@ -83,41 +82,11 @@ De igual manera, en el archivo **ReporteDeCreditoConFicoScoreApiTest.java**, se 
         
         request.setDomicilio(domicilio);
         
-        Respuesta response = api.getReporte(xApiKey, request, xFullReport);
+        Respuesta response = api.getReporte(xApiKey, request);
         
         Assert.assertTrue(response.getFolioConsulta() != null);
         
-        	logger.info(response.toString());
-        
-        
-        if (response.getFolioConsulta() != null && (xFullReport == null ||  xFullReport.equals("false") || xFullReport.equals("FALSE"))) {
-        	
-			String folioConsulta = response.getFolioConsulta();
-
-			Consultas consultas = api.getConsultas(folioConsulta, xApiKey);
-			logger.info(consultas.toString());
-			Assert.assertTrue(consultas.getConsultas() != null);
-
-			Creditos creditos = api.getCreditos(folioConsulta, xApiKey);
-			logger.info(creditos.toString());
-			Assert.assertTrue(creditos.getCreditos() != null);
-
-			DomiciliosRespuesta domicilios = api.getDomicilios(folioConsulta, xApiKey);
-			logger.info(domicilios.toString());
-			Assert.assertTrue(domicilios.getDomicilios() != null);
-
-			Empleos empleos = api.getEmpleos(folioConsulta, xApiKey);
-			logger.info(empleos.toString());
-			Assert.assertTrue(empleos.getEmpleos() != null);
-
-			Scores scores = api.getScores(folioConsulta, xApiKey);
-			logger.info(scores.toString());
-			Assert.assertTrue(scores.getScores() != null);
-		
-			Mensajes mensajes = api.getMensajes(folioConsulta, xApiKey);
-			logger.info(mensajes.toString());
-			Assert.assertTrue(mensajes.getMensajes() != null);
-		}
+        logger.info(response.toString());
         
     }
 ```
